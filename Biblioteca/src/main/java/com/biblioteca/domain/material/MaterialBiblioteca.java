@@ -3,19 +3,27 @@ package com.biblioteca.domain.material;
 public abstract sealed class MaterialBiblioteca permits
 MaterialDigital, MaterialFisico {
 
-    private long identificador;
+    private Long identificador;
 
-    protected MaterialBiblioteca(long identificador) {
+    protected MaterialBiblioteca(Long identificador) {
         this.identificador = identificador;
     }
 
-    public long getIdentificador() {
+    public Long getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(long identificador) {
+    public void setIdentificador(Long identificador) {
         this.identificador = identificador;
     }
     
+        @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "{ " +
+            "identificador: " +
+            getIdentificador() +
+            " }";
+    }
     
 }

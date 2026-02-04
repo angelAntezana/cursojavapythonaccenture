@@ -1,9 +1,12 @@
 package com.biblioteca.domain.material;
 
+import com.biblioteca.util.LoggerUtil;
+
 public final class MaterialDigital extends MaterialBiblioteca{
 
     static final String URL_BASE_MATERIALES_DIGITALES = "https://test?resource_id=";
     private TipoMaterialDigital tipoMaterialDigital;
+    private LoggerUtil log = new LoggerUtil();
 
     public MaterialDigital(long identificador, TipoMaterialDigital tipoMaterialDigital) {
         super(identificador);
@@ -19,9 +22,8 @@ public final class MaterialDigital extends MaterialBiblioteca{
     }
 
     public void getResource() {
-        IO.println("OBTENIENDO RECURSO A TRAVÉS DEL ENLACE: " + URL_BASE_MATERIALES_DIGITALES + this.getIdentificador());
+        log.info("OBTENIENDO RECURSO A TRAVÉS DEL ENLACE: " + URL_BASE_MATERIALES_DIGITALES + this.getIdentificador());
     }
-
 
 
 }

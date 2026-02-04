@@ -1,6 +1,7 @@
 package com.biblioteca.domain.libro;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.biblioteca.domain.material.MaterialBiblioteca;
 import com.biblioteca.domain.obra.TipoObra;
@@ -82,4 +83,22 @@ public class Libro {
     public void setListMaterialBibliotecas(List<MaterialBiblioteca> listMaterialBibliotecas) {
         this.listMaterialBibliotecas = listMaterialBibliotecas;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Libro)) {
+            return false;
+        }
+        Libro libro = (Libro) obj;
+        return Objects.equals(titulo, libro.titulo)
+        && Objects.equals(autor, libro.autor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo, autor);
+    }
+    
 }

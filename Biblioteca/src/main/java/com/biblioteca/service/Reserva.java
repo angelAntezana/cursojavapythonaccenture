@@ -1,10 +1,14 @@
 package com.biblioteca.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.biblioteca.domain.libro.Libro;
+import com.biblioteca.util.LoggerUtil;
 
 public class Reserva {
+
+    private LoggerUtil log = new LoggerUtil();
     
     private boolean available(Libro libro) {
         return libro.getStock() > 0;
@@ -21,20 +25,19 @@ public class Reserva {
         Libro libro = getLibroByTitulo(libros, tituloLibro);
         
         if (libro == null) {
-            IO.println("\nNo se ha encontrado el nombre del libro: " + tituloLibro);
+            log.info("\nNo se ha encontrado el nombre del libro: " + tituloLibro);
             return;
         }
 
         if(!available(libro)) {
-            IO.println("El libro " + libro.getTitulo() + " no se encuentra disponible");
+            log.info("El libro " + libro.getTitulo() + " no se encuentra disponible");
             return;
         }
 
-        IO.println("Se ha hecho la reserva para el libro " + libro.getTitulo() + " con autor " + libro.getAutor());
+        log.info("Se ha hecho la reserva para el libro " + libro.getTitulo() + " con autor " + libro.getAutor());
         libros.remove(libro);
         libro.setStock(libro.getStock() - 1);
         libros.add(libro);
-        
     }
 
 }

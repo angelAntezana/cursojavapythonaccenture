@@ -1,6 +1,7 @@
 package com.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,13 +20,16 @@ import com.biblioteca.util.LoggerUtil;
  */
 public class BibliotecaApp {
     void main() {
-        Libro libro0 = new Libro("Enciclopedia test", "test", 100, "Charles", 2, TipoObra.NOVELA);
-        Libro libro1 = new Libro("Libro test", "test", 100, "Anderson", 2, TipoObra.NOVELA);
+        LoggerUtil log = new LoggerUtil();
+        Libro libro0 = new Libro("Enciclopedia", "test", 100, "Charles", 2, TipoObra.NOVELA);
+        Libro libro1 = new Libro("Libro", "test", 100, "Anderson", 2, TipoObra.NOVELA);
         
         List<MaterialBiblioteca> materialesLibro0 = new ArrayList<>();
-        materialesLibro0.add(new MaterialDigital(1L, TipoMaterialDigital.AUDIO));
+        materialesLibro0.add(new MaterialDigital(71L, TipoMaterialDigital.AUDIO));
         materialesLibro0.add(new MaterialDigital(2L, TipoMaterialDigital.DOCUMENTO));
         materialesLibro0.add(new MaterialFisico(3L, TipoMaterialFisico.LIBRO));
+        materialesLibro0.sort((l1, l2) -> (l1.getIdentificador().intValue() - l2.getIdentificador().intValue()));
+        log.info(materialesLibro0);
 
         List<MaterialBiblioteca> materialesLibro1 = new ArrayList<>();
 
@@ -35,9 +39,9 @@ public class BibliotecaApp {
         List<Libro> libros = new ArrayList<>();
         libros.add(libro0);
         libros.add(libro1);
+        libros.sort(Comparator.comparing(Libro::getAutor).thenComparing(Libro::getTitulo));
 
         Reserva reserva = new Reserva();
-        LoggerUtil log = new LoggerUtil();
         String input;
         log.info("--- RESERVA DE LIBROS ---");
 
