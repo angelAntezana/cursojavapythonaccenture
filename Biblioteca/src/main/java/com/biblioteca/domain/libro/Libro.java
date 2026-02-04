@@ -1,4 +1,9 @@
-package com.biblioteca;
+package com.biblioteca.domain.libro;
+
+import java.util.List;
+
+import com.biblioteca.domain.material.MaterialBiblioteca;
+import com.biblioteca.domain.obra.TipoObra;
 
 public class Libro {
 
@@ -7,13 +12,19 @@ public class Libro {
     private int numeroPaginas;
     private String autor;
     private int stock;
+    private TipoObra tipoObra;
+    private List<MaterialBiblioteca> listMaterialBibliotecas;
 
-    public Libro(String titulo, String editorial, int numeroPaginas, String autor, int stock) {
+
+    public Libro(String titulo, String editorial, int numeroPaginas, String autor, int stock,
+        TipoObra tipoObra
+    ) {
         this.titulo = titulo;
         this.editorial = editorial;
         this.numeroPaginas = numeroPaginas;
         this.autor = autor;
         this.stock = stock;
+        this.tipoObra = tipoObra;
     }
 
     public String getTitulo() {
@@ -55,6 +66,20 @@ public class Libro {
     public void setAutor(String autor) {
         this.autor = autor;
     }
+
+        public TipoObra getTipoObra() {
+        return tipoObra;
+    }
+
+    public void setTipoObra(TipoObra tipoObra) {
+        this.tipoObra = tipoObra;
+    }
     
-    
+    public List<MaterialBiblioteca> getListMaterialBibliotecas() {
+        return listMaterialBibliotecas;
+    }
+
+    public void setListMaterialBibliotecas(List<MaterialBiblioteca> listMaterialBibliotecas) {
+        this.listMaterialBibliotecas = listMaterialBibliotecas;
+    }
 }

@@ -1,6 +1,8 @@
-package com.biblioteca;
+package com.biblioteca.service;
 
 import java.util.List;
+
+import com.biblioteca.domain.libro.Libro;
 
 public class Reserva {
     
@@ -23,14 +25,16 @@ public class Reserva {
             return;
         }
 
-        if(available(libro)) {
-           IO.println("Se ha hecho la reserva para el libro " + libro.getTitulo() + " con autor " + libro.getAutor());
-            libros.remove(libro);
-            libro.setStock(libro.getStock() - 1);
-            libros.add(libro);
+        if(!available(libro)) {
+            IO.println("El libro " + libro.getTitulo() + " no se encuentra disponible");
             return;
         }
-        IO.println("El libro " + libro.getTitulo() + " no se encuentra disponible");
+
+        IO.println("Se ha hecho la reserva para el libro " + libro.getTitulo() + " con autor " + libro.getAutor());
+        libros.remove(libro);
+        libro.setStock(libro.getStock() - 1);
+        libros.add(libro);
+        
     }
 
 }
