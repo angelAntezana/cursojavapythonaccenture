@@ -29,6 +29,8 @@ public class BibliotecaApp {
         materialesLibro0.add(new MaterialDigital(2L, TipoMaterialDigital.DOCUMENTO));
         materialesLibro0.add(new MaterialFisico(3L, TipoMaterialFisico.LIBRO));
         materialesLibro0.sort((l1, l2) -> (l1.getIdentificador().intValue() - l2.getIdentificador().intValue()));
+        materialesLibro0
+        .sort(Comparable::compareTo);
         log.info(materialesLibro0);
 
         List<MaterialBiblioteca> materialesLibro1 = new ArrayList<>();

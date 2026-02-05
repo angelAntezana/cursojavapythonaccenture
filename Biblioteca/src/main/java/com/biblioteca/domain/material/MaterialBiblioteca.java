@@ -1,6 +1,6 @@
 package com.biblioteca.domain.material;
 
-public abstract sealed class MaterialBiblioteca permits
+public abstract sealed class MaterialBiblioteca implements Comparable<MaterialBiblioteca> permits
 MaterialDigital, MaterialFisico {
 
     private Long identificador;
@@ -17,7 +17,7 @@ MaterialDigital, MaterialFisico {
         this.identificador = identificador;
     }
     
-        @Override
+    @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "{ " +
@@ -25,5 +25,15 @@ MaterialDigital, MaterialFisico {
             getIdentificador() +
             " }";
     }
+  @Override
+  public int compareTo(MaterialBiblioteca o) {
+    if (this.getIdentificador()>o.getIdentificador()) {
+    return 1;
+    }else if (this.getIdentificador()<o.getIdentificador()) {
+    return -1;
+    }else {
+    return 0;
+    }
+  }
     
 }
