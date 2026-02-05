@@ -28,7 +28,7 @@ public class BibliotecaApp {
         // DATA
         Usuario usuario = new Usuario("Eloy", "Cabrera", "eloy@email.com", null);
         LoggerUtil log = new LoggerUtil();
-        Libro libro0 = new Libro("Enciclopedia", "test", 100, "Charles", 2, TipoObra.NOVELA);
+        Libro libro0 = new Libro("Enciclopedia 2026", "test", 100, "Charles", 2, TipoObra.NOVELA);
         Libro libro1 = new Libro("Libro", "test", 100, "Anderson", 2, TipoObra.NOVELA);
         
         List<MaterialBiblioteca> materialesLibro0 = new ArrayList<>();
@@ -61,7 +61,7 @@ public class BibliotecaApp {
         try (Scanner scanner = new Scanner(System.in)) {
             do {
                 log.info("\nPara salir escribe n. Introduce el nombre del libro para ver si está disponible:");
-                input = scanner.next();
+                input = scanner.nextLine();
                 if (input.equals("n")) {
                     continue;
                 }
