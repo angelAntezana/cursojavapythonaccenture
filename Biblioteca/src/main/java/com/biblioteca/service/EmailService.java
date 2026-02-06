@@ -8,7 +8,7 @@ import com.biblioteca.util.LoggerUtil;
 
 public class EmailService {
     
-    private LoggerUtil log = new LoggerUtil();
+    LoggerUtil log = LoggerUtil.getInstance();
 
     public EmailService() {
     }

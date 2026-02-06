@@ -37,7 +37,7 @@ public class Animal {
 
     public static List<Animal> obtenerAnimalesMenoresASeisAños(List<Animal> animales) {
         return animales.stream()
-            .filter(animal -> animal.getEdad() > 6)
+            .filter(animal -> animal.getEdad() < 6)
             .toList();
     }
 

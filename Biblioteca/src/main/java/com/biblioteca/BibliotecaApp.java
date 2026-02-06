@@ -1,6 +1,5 @@
 package com.biblioteca;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -27,7 +26,7 @@ public class BibliotecaApp {
     void main() {
         // DATA
         Usuario usuario = new Usuario("Eloy", "Cabrera", "eloy@email.com", null);
-        LoggerUtil log = new LoggerUtil();
+        LoggerUtil log = LoggerUtil.getInstance();
         Libro libro0 = new Libro("Enciclopedia 2026", "test", 100, "Charles", 2, TipoObra.NOVELA);
         Libro libro1 = new Libro("Libro", "test", 100, "Anderson", 2, TipoObra.NOVELA);
         

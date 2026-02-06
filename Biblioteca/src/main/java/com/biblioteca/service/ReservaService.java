@@ -9,7 +9,7 @@ import com.biblioteca.util.LoggerUtil;
 
 public class ReservaService {
 
-    private LoggerUtil log = new LoggerUtil();
+    LoggerUtil log = LoggerUtil.getInstance();
     private LibroService libroService = new LibroService();
 
     public Reserva reservar(List<Libro> libros, String tituloLibro) {

@@ -6,7 +6,7 @@ public final class MaterialDigital extends MaterialBiblioteca{
 
     static final String URL_BASE_MATERIALES_DIGITALES = "https://test?resource_id=";
     private TipoMaterialDigital tipoMaterialDigital;
-    private LoggerUtil log = new LoggerUtil();
+    LoggerUtil log = LoggerUtil.getInstance();
 
     public MaterialDigital(long identificador, TipoMaterialDigital tipoMaterialDigital) {
         super(identificador);
