@@ -4,9 +4,6 @@ import com.biblioteca.domain.notification.Notification;
 import com.biblioteca.domain.notification.TypeNotification;
 
 public class NotificationFactory {
-    
-    private NotificationFactory() {
-    }
 
     public static NotificationChannel create(Notification notification) {
         TypeNotification typeNotification = notification.getTypeNotification();

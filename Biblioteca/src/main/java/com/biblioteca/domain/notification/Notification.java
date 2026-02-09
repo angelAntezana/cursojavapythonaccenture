@@ -12,6 +12,10 @@ public class Notification {
         return typeNotification;
     }
     public void setTypeNotification(TypeNotification typeNotification) {
+        // Por defecto será EMAIL
+        if (typeNotification == null) {
+            typeNotification = TypeNotification.EMAIL;
+        }
         this.typeNotification = typeNotification;
     }
     public String getMessage() {
