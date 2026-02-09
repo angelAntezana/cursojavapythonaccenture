@@ -6,7 +6,7 @@ import com.biblioteca.domain.libro.Libro;
 import com.biblioteca.domain.usuario.Usuario;
 import com.biblioteca.util.LoggerUtil;
 
-public class EmailService {
+public class EmailService implements NotificationChannel{
     
     LoggerUtil log = LoggerUtil.getInstance();
 
@@ -28,5 +28,10 @@ public class EmailService {
     public void enviarEmail(Usuario usuario, Libro libro, LocalDate diaReserva) {
         String message = contruirMensaje(usuario, libro, diaReserva);
         log.info("Se ha enviado el mensaje correctamente: " + message);
+    }
+
+    @Override
+    public void send(String message) {
+        log.info("Se ha enviado una notificación al email: " + message);
     }
 }

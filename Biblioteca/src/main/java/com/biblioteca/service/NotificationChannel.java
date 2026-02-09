@@ -1,4 +1,4 @@
-package com.biblioteca.domain.notification;
+package com.biblioteca.service;
 
 public interface NotificationChannel {
     void send(String message);

@@ -11,6 +11,8 @@ import com.biblioteca.domain.material.MaterialDigital;
 import com.biblioteca.domain.material.MaterialFisico;
 import com.biblioteca.domain.material.TipoMaterialDigital;
 import com.biblioteca.domain.material.TipoMaterialFisico;
+import com.biblioteca.domain.notification.Notification;
+import com.biblioteca.domain.notification.TypeNotification;
 import com.biblioteca.domain.obra.TipoObra;
 import com.biblioteca.domain.reserva.Reserva;
 import com.biblioteca.domain.usuario.Usuario;
@@ -18,6 +20,7 @@ import com.biblioteca.service.EmailService;
 import com.biblioteca.service.LibroService;
 import com.biblioteca.service.ReservaService;
 import com.biblioteca.util.LoggerUtil;
+import com.biblioteca.util.NotificationBus;
 
 /**
  * Hello world!
@@ -27,6 +30,8 @@ public class BibliotecaApp {
         // DATA
         Usuario usuario = new Usuario("Eloy", "Cabrera", "eloy@email.com", null);
         LoggerUtil log = LoggerUtil.getInstance();
+        NotificationBus notificationBus = new NotificationBus();
+        notificationBus.start();
         Libro libro0 = new Libro("Enciclopedia 2026", "test", 100, "Charles", 2, TipoObra.NOVELA);
         Libro libro1 = new Libro("Libro", "test", 100, "Anderson", 2, TipoObra.NOVELA);
         
@@ -68,10 +73,15 @@ public class BibliotecaApp {
                 Reserva reserva = reservaService.reservar(libros, input);
                 if (reserva != null) {
                     var libro = libroService.getLibroByTitulo(libros, input);
+                    Notification notificationEmail = new Notification(TypeNotification.EMAIL, "Notificación al email");
+                    Notification notificationPush = new Notification(TypeNotification.MOVIL, "Notificación al móvil");
+                    notificationBus.publish(notificationEmail);
+                    notificationBus.publish(notificationPush);
                     emailService.enviarEmail(usuario, libro, reserva.getFechaInicio());
                 }
 
             } while (!input.equalsIgnoreCase("n"));
+            notificationBus.stop();
 
         } catch (Exception e) {
             log.error("Ha ocurrido un error en el sistema.");

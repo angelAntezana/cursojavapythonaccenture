@@ -1,12 +1,18 @@
-package com.biblioteca.domain.notification;
+package com.biblioteca.util;
 
 
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
+
+import com.biblioteca.domain.notification.Notification;
+import com.biblioteca.domain.notification.TypeNotification;
+import com.biblioteca.service.NotificationService;
 
 public class NotificationBus {
 
-    private final Queue<String> queue = new LinkedList<>();
+    private final Queue<Notification> queue = new LinkedList<>();
+    private final NotificationService notificationService = new NotificationService();
     private final Thread worker;
     private boolean running = true;
 
@@ -25,9 +31,9 @@ public class NotificationBus {
         }
     }
 
-    public void publish(String message) {
+    public void publish(Notification notification) {
         synchronized (queue) {
-            queue.add(message);
+            queue.add(notification);
             queue.notify(); // despierta al worker si estaba esperando
         }
     }
@@ -36,7 +42,7 @@ public class NotificationBus {
         @Override
         public void run() {
             while (true) {
-                String msg;
+                Notification msg;
 
                 synchronized (queue) {
                     while (queue.isEmpty() && running) {
@@ -56,7 +62,7 @@ public class NotificationBus {
                 }
 
                 // Procesamiento fuera del synchronized
-                System.out.println("[NOTIF] " + msg);
+                notificationService.sendNotification(msg);
 
                 try {
                     Thread.sleep(200); // simula trabajo
