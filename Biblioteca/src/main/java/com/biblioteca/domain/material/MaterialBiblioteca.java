@@ -1,5 +1,7 @@
 package com.biblioteca.domain.material;
 
+import java.util.Objects;
+
 public abstract sealed class MaterialBiblioteca implements Comparable<MaterialBiblioteca> permits
         MaterialDigital, MaterialFisico {
 
@@ -19,7 +21,6 @@ public abstract sealed class MaterialBiblioteca implements Comparable<MaterialBi
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return "{ " +
                 "identificador: " +
                 getIdentificador() +
@@ -35,6 +36,23 @@ public abstract sealed class MaterialBiblioteca implements Comparable<MaterialBi
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof MaterialBiblioteca)) {
+            return false;
+        }
+        MaterialBiblioteca materialBiblioteca = (MaterialBiblioteca) obj;
+        return Objects.equals(identificador, materialBiblioteca.identificador);
+
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificador);
     }
 
 }

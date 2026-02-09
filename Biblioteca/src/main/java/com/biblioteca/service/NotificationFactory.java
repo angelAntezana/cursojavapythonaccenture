@@ -5,7 +5,7 @@ import com.biblioteca.domain.notification.TypeNotification;
 
 public class NotificationFactory {
     
-    public NotificationFactory() {
+    private NotificationFactory() {
     }
 
     public static NotificationChannel create(Notification notification) {
