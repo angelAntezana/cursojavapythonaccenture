@@ -2,11 +2,9 @@ package com.biblioteca.util;
 
 
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
 
 import com.biblioteca.domain.notification.Notification;
-import com.biblioteca.domain.notification.TypeNotification;
 import com.biblioteca.service.NotificationService;
 
 public class NotificationBus {
