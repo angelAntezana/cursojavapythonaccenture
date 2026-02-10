@@ -1,0 +1,15 @@
+
+### Crear libro
+POST http://localhost:8080/libros/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Test2"
+}
+
+
+
+### Obtener lista de libros
+GET http://localhost:8080/libros/
+Accept: application/json
