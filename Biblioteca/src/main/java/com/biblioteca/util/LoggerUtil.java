@@ -7,14 +7,17 @@ public class LoggerUtil {
     
     private static final Logger logger = Logger.getLogger(LoggerUtil.class.getName());
 
-    private static final LoggerUtil INSTANCE = new LoggerUtil();
+    private static LoggerUtil instance;
     // constructor privado
     private LoggerUtil() {
     }
 
     // punto de acceso global
     public static LoggerUtil getInstance() {
-    return INSTANCE;
+        if (instance == null) {
+            instance = new LoggerUtil();
+        }
+        return instance;
     }
 
     public void info(String mensaje) {
