@@ -39,5 +39,13 @@ def esta_comprometida_cache(password: str, ruta: Path | str | None = None):
     return password.strip() in _COMPROMETIDAS_CACHE
 
 
-def validar_password(password: str):
-    pass
+def validar_password(password: str, modo: str = "generador")-> tuple[bool, str]:
+    if modo == "generador":
+        comprometida = esta_comprometida_generador(password)
+    else:
+        comprometida = esta_comprometida_cache(password)
+    print(comprometida)
+    if comprometida:
+        return (comprometida, "Tu contraseña está comprometida")
+    else:
+        return (comprometida, "No está comprometida")
