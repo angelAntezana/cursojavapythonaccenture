@@ -2,7 +2,7 @@ from pathlib import Path
 
 def ruta_por_defecto() -> Path:
     """Devuelve la ruta al passwods.txt"""
-    return Path(__file__).resolve().parent / "data" / "passwords.txt"
+    return Path(__file__).resolve().parent / "passwords.txt"
 
 def iter_comprometidas(ruta: Path | str | None = None):
     """recorre todo el fichero para devolver contraseñas 1 a 1"""
